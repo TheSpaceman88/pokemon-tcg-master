@@ -16,7 +16,7 @@ public class CarteService {
     public CarteService(CarteRepository carteRepository) {
         this.carteRepository = carteRepository;
     }
-
+    
     public List<Carte> getAllCartes() {
         return carteRepository.findAll();
     }
@@ -37,4 +37,18 @@ public class CarteService {
             throw new IllegalArgumentException("Carte avec l'ID " + id + " non trouvée.");
         }
     }
+    public boolean deleteCarte(String id) {
+        try {
+            Long carteId = Long.parseLong(id); 
+            if (carteRepository.existsById(id)) {
+                carteRepository.deleteById(id);
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            return false; 
+        return false;
+    }
+    
+}
+    
 }

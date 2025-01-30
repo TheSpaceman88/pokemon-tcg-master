@@ -8,7 +8,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 public class AuthenticationService {
 
 	private static final String AUTH_TOKEN_HEADER_NAME = "X-API-KEY";
-	private static final String AUTH_TOKEN = "A_MODIFIER";
+	private static final String AUTH_TOKEN = "473901a5d89f34e394ec97c01a87b4a1d1757aa15d5bc72fb6450e4f2fe46e7f";
 
 	public static Authentication getAuthentication(HttpServletRequest request) {
 		String apiKey = request.getHeader(AUTH_TOKEN_HEADER_NAME);

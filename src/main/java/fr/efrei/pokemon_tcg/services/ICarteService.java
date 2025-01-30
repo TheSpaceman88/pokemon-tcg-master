@@ -1,25 +1,27 @@
 package fr.efrei.pokemon_tcg.services;
 
 import java.time.LocalDate;
-
-import fr.efrei.pokemon_tcg.models.Carte;
-import fr.efrei.pokemon_tcg.repositories.CarteRepository;
-import org.springframework.stereotype.Service;
-import java.util.List;
 import java.util.Optional;
 
-@Service
-public class ICarteService {
+import fr.efrei.pokemon_tcg.constants.TypeCarte;
+import fr.efrei.pokemon_tcg.controllers.CarteController;
+import fr.efrei.pokemon_tcg.dto.CreateCarte;
+import fr.efrei.pokemon_tcg.models.Carte;
+import java.util.List;
 
-    private final CarteRepository carteRepository;
 
-    public ICarteService(CarteRepository carteRepository) {
-        this.carteRepository = carteRepository;
-    }
-    
-    public List<Carte> findAll() {
-        return carteRepository.findAll();
-    }
+public interface ICarteService {
+
+	List<Carte> findAll();
+
+	//Pokemon findById(String uuid);
+
+	void create(CreateCarte carte);
+
+	//boolean update(String uuid, Pokemon pokemon);
+
+	//boolean delete(String uuid);
+}
 
 //     public Carte getCarteById(Long id) {
 //         return carteRepository.findById(id).orElse(null);
@@ -51,4 +53,4 @@ public class ICarteService {
     
 // }
     
-}
+//}

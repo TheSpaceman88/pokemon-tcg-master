@@ -1,39 +1,68 @@
 package fr.efrei.pokemon_tcg.models;
-import java.time.LocalDate;
 
+import fr.efrei.pokemon_tcg.constants.TypeCarte;
 import jakarta.persistence.*;
-import lombok.*;
 
 @Entity
-@Table(name = "cartes") 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(builderMethodName= "builder")
-
 public class Carte {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(nullable = false)
-    private String nomPokemon; // pikachu
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private String uuid;
 
-    @Column(nullable = false)
-    private LocalDate dateCreation;
+	private String nom;
 
-    @Column(nullable = false)
     private String attaque1;
-
-    @Column(nullable = false)
+    
     private String attaque2;
 
-    @Column
-    private Integer userID; // 0
+	// private Integer niveau;
 
-    @Column
-    private Integer rarete = 1;  // 1 //
-    
+	@Enumerated(EnumType.STRING)
+	private TypeCarte type;
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+    public String getAttaque1() {
+		return attaque1;
+	}
+
+	public void setAttaque1(String attaque1) {
+		this.attaque1 = attaque1;
+	}
+
+    public String getAttaque2() {
+		return attaque2;
+	}
+
+	public void setAttaque2(String attaque2) {
+		this.attaque2 = attaque2;
+	}
+
+	// public Integer getNiveau() {
+	// 	return niveau;
+	// }
+
+	// public void setNiveau(Integer niveau) {
+	// 	this.niveau = niveau;
+	// }
+
+	public TypeCarte getType() {
+		return type;
+	}
+
+	public void setType(TypeCarte type) {
+		this.type = type;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
 }

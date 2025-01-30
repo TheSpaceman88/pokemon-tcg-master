@@ -1,8 +1,9 @@
 package fr.efrei.pokemon_tcg.controllers;
-
+import fr.efrei.pokemon_tcg.constants.TypeCarte;
+import fr.efrei.pokemon_tcg.dto.CreateCarte;
 import fr.efrei.pokemon_tcg.models.Carte;
-import fr.efrei.pokemon_tcg.models.Dresseur;
 import fr.efrei.pokemon_tcg.services.ICarteService;
+import fr.efrei.pokemon_tcg.services.implementations.CarteServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,11 +34,11 @@ public class CarteController {
     //     return new ResponseEntity<>(carte, HttpStatus.OK);
     // }
 
-    // @PostMapping
-    // public ResponseEntity<Carte> createCarte(@Valid @RequestBody Carte carte) {
-    //     Carte savedCarte = carteService.saveCarte(carte);
-    //     return ResponseEntity.status(HttpStatus.CREATED).body(savedCarte);
-    // }
+
+    @PostMapping
+	public ResponseEntity<?> createCarte(@Valid @RequestBody CreateCarte carte) {
+		carteService.create(carte);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 
     // @DeleteMapping("/{uuid}")
     // public ResponseEntity<?> deleteCarte(@PathVariable String uuid) {
@@ -46,5 +47,5 @@ public class CarteController {
     //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     //     }
     //     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    // }
+    }
 }

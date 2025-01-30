@@ -24,9 +24,9 @@ public class CarteController {
         return cartes.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(cartes);
     }
 
-    @GetMapping("/{uuid}")
-    public ResponseEntity<Carte> getById(@PathVariable String uuid) {
-        Carte carte = carteService.findById(uuid);
+    @GetMapping("/{id}")
+    public ResponseEntity<Carte> getById(@PathVariable String id) {
+        Carte carte = carteService.findById(id);
         if (carte == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -39,12 +39,13 @@ public class CarteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCarte);
     }
 
-    @DeleteMapping("/{uuid}")
-    public ResponseEntity<?> deleteCarte(@PathVariable String uuid) {
-        boolean isSupprimer = carteService.delete(uuid);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCarte(@PathVariable String id) {
+        boolean isSupprimer = carteService.delete(id);
         if (!isSupprimer) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+ 
 }

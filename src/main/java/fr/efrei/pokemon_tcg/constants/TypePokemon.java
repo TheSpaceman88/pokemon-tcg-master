@@ -5,3 +5,5 @@ public enum TypePokemon {
 	FEU, // 1
 	EAU // 2
 }
+
+

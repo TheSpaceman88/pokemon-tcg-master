@@ -30,6 +30,7 @@ public class CarteService {
         return carteRepository.save(carte);
     }
 
+
     public void deleteCarte(Long id) {
         if (carteRepository.existsById(id)) {
             carteRepository.deleteById(id);
@@ -37,4 +38,18 @@ public class CarteService {
             throw new IllegalArgumentException("Carte avec l'ID " + id + " non trouvée.");
         }
     }
+    public boolean deleteCarte(String id) {
+        try {
+            Long carteId = Long.parseLong(id); 
+            if (carteRepository.existsById(id)) {
+                carteRepository.deleteById(id);
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            return false; 
+        return false;
+    }
+    
+}
+    
 }

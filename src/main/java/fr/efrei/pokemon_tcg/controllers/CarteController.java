@@ -19,16 +19,18 @@ public class CarteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Carte>> getAll() {
-        List<Carte> cartes = carteService.getAllCartes();
+    public ResponseEntity<List<Carte>> getAll(@RequestParam(required = false) String type) {
+        List<Carte> cartes = carteService.findAll(type);
         return cartes.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(cartes);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Carte> getById(@PathVariable Long id) {
-        return carteService.getCarteById(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    @GetMapping("/{uuid}")
+    public ResponseEntity<Carte> getById(@PathVariable String uuid) {
+        Carte carte = carteService.findById(uuid);
+        if (carte == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(carte, HttpStatus.OK);
     }
 
     @PostMapping
@@ -37,9 +39,12 @@ public class CarteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCarte);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCarte(@PathVariable Long id) {
-        boolean isSupprimer = carteService.deleteCarte(id);
-        return isSupprimer ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity<?> deleteCarte(@PathVariable String uuid) {
+        boolean isSupprimer = carteService.delete(uuid);
+        if (!isSupprimer) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

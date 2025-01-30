@@ -9,5 +9,5 @@ import fr.efrei.pokemon_tcg.models.Dresseur;
 
 @Repository
 public interface CarteRepository extends JpaRepository<Carte, Long> {
-  
+    List<Carte> findAll();
 }

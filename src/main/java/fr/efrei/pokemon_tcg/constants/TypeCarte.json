@@ -1,0 +1,37 @@
+{
+    "TypeCarte": {
+      "0": "Commun",
+      "1": "Peu_commun",
+      "2": "Rare",
+      "3": "Epic",
+      "4": "Legendaire"
+    },
+    "NomCarte": [
+      "Pikachu",
+      "Evoli",
+      "Dracaufeu",
+      "Mewtwo",
+      "Dracolosse",
+      "Rayquaza",
+      "Arceus"
+    ],
+    "Attaque1": [
+      "Eclair",
+      "Morsure",
+      "Lance_Flammes",
+      "Psyko",
+      "Ouragan",
+      "Draco_Ascension",
+      "Jugement"
+    ],
+    "Attaque2": [
+      "Tonnerre",
+      "Vive_Attaque",
+      "Deflagration",
+      "Ball_Ombre",
+      "Ultralaser",
+      "Colère",
+      "Punition"
+    ]
+  }
+  

@@ -1,5 +1,5 @@
 package fr.efrei.pokemon_tcg.controllers;
-
+import fr.efrei.pokemon_tcg.dto.TirageCarte;
 import fr.efrei.pokemon_tcg.dto.CapturePokemon;
 import fr.efrei.pokemon_tcg.dto.DresseurDTO;
 import fr.efrei.pokemon_tcg.models.Dresseur;
@@ -44,6 +44,15 @@ public class DresseurController {
 			@RequestBody CapturePokemon capturePokemon
 	) {
 		dresseurService.capturerPokemon(uuid, capturePokemon);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	@PatchMapping("/{uuid}/tirer")
+	public ResponseEntity<?> tirageCarte(
+			@PathVariable String uuid,
+			@RequestBody TirageCarte tirageCarte
+	) {
+		dresseurService.tirageCarte(uuid, tirageCarte);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 

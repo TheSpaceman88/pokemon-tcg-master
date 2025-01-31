@@ -1,5 +1,5 @@
 package fr.efrei.pokemon_tcg.services;
-
+import fr.efrei.pokemon_tcg.dto.TirageCarte;
 import fr.efrei.pokemon_tcg.dto.CapturePokemon;
 import fr.efrei.pokemon_tcg.dto.DresseurDTO;
 import fr.efrei.pokemon_tcg.models.Dresseur;
@@ -16,4 +16,5 @@ public interface IDresseurService {
 	boolean delete(String uuid);
 
 	void capturerPokemon(String uuid, CapturePokemon capturePokemon);
+	void tirageCarte(String uuid, TirageCarte tirageCarte);
 }

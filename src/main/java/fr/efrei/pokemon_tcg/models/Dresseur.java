@@ -20,6 +20,8 @@ public class Dresseur {
 
 	@OneToMany
 	List<Pokemon> pokemonList;
+	@OneToMany
+	List<Carte> carteList;
 
 	public String getUuid() {
 		return uuid;
@@ -57,7 +59,14 @@ public class Dresseur {
 		return pokemonList;
 	}
 
+	public List<Carte> getCarteList() {
+		return carteList;
+	}
+
 	public void setPokemonList(List<Pokemon> pokemonList) {
 		this.pokemonList = pokemonList;
+	}
+	public void setCarteList(List<Carte> carteList) {
+		this.carteList = carteList;
 	}
 }

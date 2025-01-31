@@ -18,9 +18,9 @@ public interface ICarteService {
 
 	void create(CreateCarte carte);
 
-	//boolean update(String uuid, Pokemon pokemon);
+	boolean update(String uuid, Carte carte);
 
-	//boolean delete(String uuid);
+	boolean delete(String uuid);
 }
 
 //     public Carte getCarteById(Long id) {

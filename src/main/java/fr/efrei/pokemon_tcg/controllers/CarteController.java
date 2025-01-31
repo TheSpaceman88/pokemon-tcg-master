@@ -2,6 +2,7 @@ package fr.efrei.pokemon_tcg.controllers;
 import fr.efrei.pokemon_tcg.constants.TypeCarte;
 import fr.efrei.pokemon_tcg.dto.CreateCarte;
 import fr.efrei.pokemon_tcg.models.Carte;
+import fr.efrei.pokemon_tcg.models.Pokemon;
 import fr.efrei.pokemon_tcg.services.ICarteService;
 import fr.efrei.pokemon_tcg.services.implementations.CarteServiceImpl;
 import jakarta.validation.Valid;
@@ -33,19 +34,26 @@ public class CarteController {
         }
         return new ResponseEntity<>(carte, HttpStatus.OK);
     }
-
+	@PutMapping("/{uuid}")
+	public ResponseEntity<?> updateCarte(@PathVariable String uuid, @RequestBody Carte carte) {
+		boolean isModifier = carteService.update(uuid, carte);
+		if(!isModifier) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);}
 
     @PostMapping
 	public ResponseEntity<?> createCarte(@Valid @RequestBody CreateCarte carte) {
 		carteService.create(carte);
 		return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
-    // @DeleteMapping("/{uuid}")
-    // public ResponseEntity<?> deleteCarte(@PathVariable String uuid) {
-    //     boolean isSupprimer = carteService.delete(uuid);
-    //     if (!isSupprimer) {
-    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     }
-    //     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        @DeleteMapping("/{uuid}")
+    public ResponseEntity<?> deleteCarte(@PathVariable String uuid) {
+        boolean isSupprimer = carteService.delete(uuid);
+        if (!isSupprimer) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

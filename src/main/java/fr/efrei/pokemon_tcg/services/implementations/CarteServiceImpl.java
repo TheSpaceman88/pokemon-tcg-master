@@ -48,19 +48,20 @@ public class CarteServiceImpl implements ICarteService {
 			return false;
 		}
 		carteAModifier.setNom(carte.getNom());
-		carteAModifier.setNiveau(carte.getNiveau());
+		carteAModifier.setAttaque1(carte.getAttaque1());
+		carteAModifier.setAttaque2(carte.getAttaque2());
 		carteAModifier.setType(carte.getType());
 		repository.save(carteAModifier);
 		return true;
 	}
 
-	// @Override
-	// public boolean delete(String uuid) {
-	// 	Carte carteAModifier = findById(uuid);
-	// 	if(carteAModifier == null) {
-	// 		return false;
-	// 	}
-	// 	repository.deleteById(uuid);
-	// 	return true;
-	// }
+	@Override
+	public boolean delete(String uuid) {
+		Carte carteAModifier = findById(uuid);
+		if(carteAModifier == null) {
+			return false;
+		}
+		repository.deleteById(uuid);
+		return true;
+	}
 }

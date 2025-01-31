@@ -7,3 +7,4 @@ public enum TypeCarte {
 	Epic, //3
 	Legendaire //4
 }
+

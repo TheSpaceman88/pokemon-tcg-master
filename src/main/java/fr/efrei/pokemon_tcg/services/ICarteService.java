@@ -14,7 +14,7 @@ public interface ICarteService {
 
 	List<Carte> findAll();
 
-	//Pokemon findById(String uuid);
+	Carte findById(String uuid);
 
 	void create(CreateCarte carte);
 

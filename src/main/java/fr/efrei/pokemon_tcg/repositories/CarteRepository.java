@@ -8,6 +8,7 @@ import fr.efrei.pokemon_tcg.models.Carte;
 import fr.efrei.pokemon_tcg.models.Dresseur;
 
 @Repository
-public interface CarteRepository extends JpaRepository<Carte, Long> {
+public interface CarteRepository extends JpaRepository<Carte, String> {
     List<Carte> findAll();
+    
 }

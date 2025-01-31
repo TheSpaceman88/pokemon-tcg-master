@@ -25,14 +25,14 @@ public class CarteController {
 		return new ResponseEntity<>(carteService.findAll(), HttpStatus.OK);
 	}
 
-    // @GetMapping("/{uuid}")
-    // public ResponseEntity<Carte> getById(@PathVariable String uuid) {
-    //     Carte carte = carteService.findById(uuid);
-    //     if (carte == null) {
-    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     }
-    //     return new ResponseEntity<>(carte, HttpStatus.OK);
-    // }
+    @GetMapping("/{uuid}")
+    public ResponseEntity<Carte> getById(@PathVariable String uuid) {
+        Carte carte = carteService.findById(uuid);
+        if (carte == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(carte, HttpStatus.OK);
+    }
 
 
     @PostMapping

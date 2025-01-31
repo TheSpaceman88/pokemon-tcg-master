@@ -34,24 +34,25 @@ public class CarteServiceImpl implements ICarteService {
 		repository.save(carteACreer);
 	}
 
-	// @Override
-	// public Carte findById(String uuid) {
-	// 	// renvoie soit un carte soit null
-	// 	return repository.findById(uuid).orElse(null);
-	// }
+	@Override
+	public Carte findById(String uuid) {
+		// renvoie soit un carte soit null
+		
+		return repository.findById(uuid).orElse(null);
+	}
 
-	// @Override
-	// public boolean update(String uuid, Carte carte) {
-	// 	Carte carteAModifier = findById(uuid);
-	// 	if(carteAModifier == null) {
-	// 		return false;
-	// 	}
-	// 	carteAModifier.setNom(carte.getNom());
-	// 	carteAModifier.setNiveau(carte.getNiveau());
-	// 	carteAModifier.setType(carte.getType());
-	// 	repository.save(carteAModifier);
-	// 	return true;
-	// }
+	@Override
+	public boolean update(String uuid, Carte carte) {
+		Carte carteAModifier = findById(uuid);
+		if(carteAModifier == null) {
+			return false;
+		}
+		carteAModifier.setNom(carte.getNom());
+		carteAModifier.setNiveau(carte.getNiveau());
+		carteAModifier.setType(carte.getType());
+		repository.save(carteAModifier);
+		return true;
+	}
 
 	// @Override
 	// public boolean delete(String uuid) {
